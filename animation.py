@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os, time
 import signal
 import sys
