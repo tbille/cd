@@ -11,7 +11,7 @@ signal.signal(signal.SIGINT, signal_handler)
 
 os.system('clear')
 
-BASE_DIR = os.getenv("SNAP", ".")
+BASE_DIR = os.getenv("SNAP", ".") + "/"
 
 def animate(delay = 1, repeat = 10):
     frames = []
