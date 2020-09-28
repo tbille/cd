@@ -1,0 +1,4 @@
+build/
+cdrom.egg-info/
+cdrom_digital-audio_amd64.snap
+dist/

@@ -1,0 +1,24 @@
+name: cdrom
+version: digital-audio
+summary: CDrom love
+description: |
+        cd rom
+
+base: core20
+
+parts:
+  cdrom-frames:
+    source: https://github.com/tbille/cdrom.git
+    plugin: dump
+    stage:
+      - frames/
+    prime:
+      - frames/
+
+  cdrom:
+    plugin: python
+    source: https://github.com/tbille/cdrom.git
+
+apps:
+  cdrom:
+    command: bin/cdrom.py
