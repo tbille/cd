@@ -11,10 +11,12 @@ signal.signal(signal.SIGINT, signal_handler)
 
 os.system('clear')
 
+BASE_DIR = os.getenv("SNAP", ".")
+
 def animate(delay = 1, repeat = 10):
     frames = []
     for i in range(23):
-        with open(f"frames/frame{i+1}", "r", encoding="utf8") as f:
+        with open(f"{BASE_DIR}frames/frame{i+1}", "r", encoding="utf8") as f:
             frames.append(f.readlines())
 
     for repeat in range(repeat):
