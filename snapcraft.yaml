@@ -4,8 +4,11 @@ summary: CDrom love
 description: |
         cd rom
 
-base: core20
+base: core18
 
+environment:
+  ESPEAK_DATA_PATH: "$SNAP/usr/lib/${SNAPCRAFT_ARCH_TRIPLET}/espeak-data"
+  LD_LIBRARY_PATH: "$SNAP/usr/lib/:$SNAP/usr/lib/x86_64-gnu-linux:$LD_LIBRARY_PATH"
 parts:
   cdrom-frames:
     source: https://github.com/tbille/cdrom.git
@@ -18,7 +21,16 @@ parts:
   cdrom:
     plugin: python
     source: https://github.com/tbille/cdrom.git
+    stage-packages:
+      - espeak
+      - ffmpeg
+      - libespeak1
 
 apps:
   cdrom:
     command: bin/cdrom.py
+    plugs:
+      - audio-playback
+    environment:
+        ESPEAK_DATA_PATH: "$SNAP/usr/lib/${SNAPCRAFT_ARCH_TRIPLET}/espeak-data"
+        LD_LIBRARY_PATH: "$SNAP/usr/lib/:$SNAP/usr/lib/x86_64-gnu-linux:$LD_LIBRARY_PATH"
