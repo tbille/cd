@@ -9,6 +9,10 @@ from multiprocessing import Process
 os.system("clear")
 BASE_DIR = os.getenv("SNAP", ".") + "/"
 
+if os.getenv("SNAP"):
+    os.environ['LD_LIBRARY_PATH'] = BASE_DIR + "usr/lib/:$SNAP/usr/lib/x86_64-gnu-linux:" + os.environ['LD_LIBRARY_PATH']
+    os.environ['ESPEAK_DATA_PATH'] = BASE_DIR + "usr/lib/x86_64-gnu-linux/espeak-data"
+
 p1 = None
 p2 = None
 
