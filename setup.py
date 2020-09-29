@@ -8,5 +8,5 @@ setup(
     name="cdrom",
     version="disc-compact",
     install_requires=requirements,
-    scripts=["cdrom.py"],
+    scripts=["cdrom.py", "cdrom-launch.sh"],
 )
