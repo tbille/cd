@@ -4,6 +4,9 @@ import os, time
 import signal
 import sys
 from multiprocessing import Process
+import requests
+import pyttsx3
+
 
 
 os.system("clear")
@@ -27,17 +30,20 @@ def animate():
 
 
 def sing():
-    import pyttsx3
-
     engine = pyttsx3.init()
 
     rate = engine.getProperty("rate")
-    engine.setProperty("rate", rate - 50)
+    engine.setProperty("rate", rate - 70)
 
-    with open(f"{BASE_DIR}frames/lyrics", "r") as ifile:
-        for line in ifile:
-            engine.say(line)
-            engine.runAndWait()
+    try:
+        quote = requests.get(
+            "https://api.kanye.rest/?format=text"
+        ).content.decode("utf-8")
+    except Exception:
+        quote = "The cow is in the house"
+
+    engine.say(quote)
+    engine.runAndWait()
 
     p1.terminate()
 
