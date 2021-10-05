@@ -9,7 +9,7 @@ Enjoy the bests quote from Kanye pretending that they come from a CD on your ter
 
 ```bash
 sudo apt install libespeak1
-pip install -r requirements
+pip install -r requirements.txt
 python cdrom.py
 ```
 
